@@ -2,16 +2,6 @@ import numpy as np
 import soundfile as sf
 from onset_finder import estimate_voicing_onset_seconds
 
-
-def _fade_in_out(n: int, fade: int) -> np.ndarray:
-    """Window that stays at 1 in the middle and fades at both ends."""
-    env = np.ones(n, dtype=np.float32)
-    fade = max(1, min(fade, n // 2))
-    env[:fade] = np.linspace(0.0, 1.0, fade, endpoint=False)
-    env[-fade:] = np.linspace(1.0, 0.0, fade, endpoint=False)
-    return env
-
-
 def shift_voicing_onset(
     wav_in: str,
     wav_out: str,
@@ -75,7 +65,7 @@ if __name__ == "__main__":
     # Example:
     # Move voicing onset 35 ms later
     input_file= input("Enter .wav to be changed:\n")
-    VOT_OG= estimate_voicing_onset_seconds("Say.wav")
+    VOT_OG= estimate_voicing_onset_seconds(input_file)
     shift_voicing_onset(
         wav_in=input_file,
         wav_out="140_ms_VOT.wav",
