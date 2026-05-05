@@ -27,7 +27,6 @@ def estimate_voicing_onset_seconds(path, frame_ms=20, hop_ms=5, min_f0=60, max_f
 
         periodicity = np.max(ac[min_lag:max_lag + 1])
 
-        # threshold may need tuning for your recording
         if periodicity > 0.3:
             best_time = start / sr
             break
