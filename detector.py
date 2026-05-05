@@ -18,6 +18,9 @@ def find_words(audio_file: str):
     return result
 
 if __name__ == "__main__":
-    audio_file= "Say.wav"
+    audio_file= "harvard.wav"
     transcript= find_words(audio_file= audio_file)
+    print("\n")
+    print(transcript)
+    print("\n")
     print(transcript["segments"])

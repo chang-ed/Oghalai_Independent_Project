@@ -1,6 +1,6 @@
 import numpy as np
 import soundfile as sf
-from onset_finder import estimate_voicing_onset_seconds
+from consonant_finder import estimate_consonant_timings_seconds
 
 def consonant_changer(
     wav_in: str,
@@ -8,10 +8,9 @@ def consonant_changer(
     voicing_onset_s: float,
     pre_noise_ms: float = 30.0,
     voiced_template_ms: float = 80.0,
-    fade_ms: float = 5.0,
 ):
     """
-    Idea: modify fricative consonant "envelopes"
+    Idea: eventually modify fricative consonant "envelopes"
 
     Parameters
     ----------
@@ -20,7 +19,6 @@ def consonant_changer(
     voicing_onset_s : onset of voicing in seconds
     pre_noise_ms : amount of fricative noise to sample before onset
     voiced_template_ms : amount of voiced speech to use as the template
-    fade_ms : crossfade length to avoid clicks
     """
     x, sr = sf.read(wav_in)
     if x.ndim > 1:
@@ -30,7 +28,6 @@ def consonant_changer(
     shift = int(round(140.0 * sr / 1000.0)) #delay offset as an example
     pre_noise = int(round(pre_noise_ms * sr / 1000.0))
     voiced_len = int(round(voiced_template_ms * sr / 1000.0))
-    fade = int(round(fade_ms * sr / 1000.0))
 
     if onset <= 0 or onset >= len(x):
         raise ValueError("voicing_onset_s must fall inside the file")
