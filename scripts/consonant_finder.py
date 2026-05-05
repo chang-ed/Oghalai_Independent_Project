@@ -89,7 +89,7 @@ def estimate_s_timings_seconds(
     return intervals
 
 if __name__ == "__main__":
-    audio_file = "Say.wav"
+    audio_file = "audiofiles/Say.wav"
     x, sr = sf.read(audio_file)
     if x.ndim > 1:
         x = x.mean(axis=1)

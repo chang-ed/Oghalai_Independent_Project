@@ -4,10 +4,14 @@ import matplotlib.pyplot as plt
 from consonant_finder import estimate_s_timings_seconds
 from detector import find_words
 
+import os
+
+print(os.getcwd())        # shows where you are
+print(os.listdir())       # shows files/folders here
+
 def main():
-    audio_file= "Share.wav"
+    audio_file= "audiofiles/harvard.wav"
     transcript_plus_timings= find_words(audio_file= audio_file)
-    result= {}
 
     x, sr = sf.read(audio_file)
     if x.ndim > 1:
@@ -17,7 +21,7 @@ def main():
     for w in transcript_plus_timings["word_segments"]:
         word = w['word']
         if 's' in word.lower(): #need to implement all fricative consonants
-    #problem: s can make both /s/ and /sh/ maybe implement a feature that can distinguish based on transcript
+    #problem: s can make both /s/ and /sh/ sounds. Future: implement a feature that can distinguish based on transcript
             start_sec = float(w["start"])
             end_sec = float(w["end"])
 
@@ -35,7 +39,7 @@ def main():
 
 
 
-            if word == "Share.":
+            if word == "restores":
                 print(f"\nThere are /s/ at", sep= " ")
                 for i,_ in enumerate(consonant_intervals):
                     print(f"{consonant_intervals[i][0]}")
