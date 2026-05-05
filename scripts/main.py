@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 from consonant_finder import estimate_s_timings_seconds
 from detector import find_words
 
-import os
-
-print(os.getcwd())        # shows where you are
-print(os.listdir())       # shows files/folders here
-
 def main():
     audio_file= "audiofiles/harvard.wav"
     transcript_plus_timings= find_words(audio_file= audio_file)
