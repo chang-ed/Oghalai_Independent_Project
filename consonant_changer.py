@@ -1,6 +1,6 @@
 import numpy as np
 import soundfile as sf
-from consonant_finder import estimate_consonant_timings_seconds
+from consonant_finder import estimate_s_timings_seconds
 
 def consonant_changer(
     wav_in: str,
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     # Example:
     # Move voicing onset 140 ms later
     input_file= input("Enter .wav to be changed:\n")
-    VOT_OG= estimate_voicing_onset_seconds(input_file)
+    VOT_OG= estimate_s_timings_seconds(input_file)
     consonant_changer(
         wav_in=input_file,
         wav_out="140_ms_VOT.wav",
