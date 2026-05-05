@@ -15,7 +15,8 @@ def main():
 
     for w in transcript_plus_timings["word_segments"]:
         word = w['word']
-        if 's' in word.lower(): #need to implement all fricative consonants
+        if 's' in word.lower(): #need to implement all fricative consonants 
+            #/f, v, θ, ð, s, z, ʃ, ʒ, h/.
     #problem: s can make both /s/ and /sh/ sounds. Future: implement a feature that can distinguish based on transcript
             start_sec = float(w["start"])
             end_sec = float(w["end"])
